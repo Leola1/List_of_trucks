@@ -7,9 +7,9 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
-import com.test.testrxjavaretpofitroom.APIupdateService;
-import com.test.testrxjavaretpofitroom.Truck;
-import com.test.testrxjavaretpofitroom.UpdateDataTruck;
+import com.test.testrxjavaretpofitroom.ApiService.APIupdateService;
+import com.test.testrxjavaretpofitroom.Transport.Truck;
+import com.test.testrxjavaretpofitroom.Transport.UpdateDataTruck;
 import com.test.testrxjavaretpofitroom.databinding.ListItemBinding;
 
 import java.util.ArrayList;
@@ -96,7 +96,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataViewHolder
        }
 
 
-
        class DataViewHolder extends RecyclerView.ViewHolder{
             private ListItemBinding itemBinding;
 
@@ -112,7 +111,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.DataViewHolder
             notifyDataSetChanged();
         }
 
-       public  Truck getPokemonAt(int position){
+       public  Truck getTruckAt(int position){
             return mList.get(position);
         }
 

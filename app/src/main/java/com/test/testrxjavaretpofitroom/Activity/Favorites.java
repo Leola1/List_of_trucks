@@ -1,4 +1,4 @@
-package com.test.testrxjavaretpofitroom;
+package com.test.testrxjavaretpofitroom.Activity;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.Toast;
 
 import com.test.testrxjavaretpofitroom.Adapter.DataAdapter;
 import com.test.testrxjavaretpofitroom.Adapter.TexAdapter;
+import com.test.testrxjavaretpofitroom.ViewModel.DataViewModel;
+import com.test.testrxjavaretpofitroom.Transport.Tex;
+import com.test.testrxjavaretpofitroom.Transport.Truck;
 import com.test.testrxjavaretpofitroom.databinding.FavoriteBinding;
 
 import java.util.ArrayList;
@@ -44,7 +47,7 @@ public class Favorites extends Fragment {
                            @Nullable ViewGroup container,
                            @Nullable Bundle savedInstanceState) {
 
-     //  binding = ListItemBinding.inflate(inflater,container,false);
+
      //  fBinding = DataBindingUtil.inflate(inflater, R.layout.favorite,container, false);
        fBinding = FavoriteBinding.inflate(inflater,container,false);
       return fBinding.getRoot();
@@ -60,20 +63,20 @@ public class Favorites extends Fragment {
         initRecyclerView();
         setUpItemTouchHelper();
         observeData();
-       viewModel.getFavoritePokemon();
+       viewModel.getFavoriteTruck();
        viewModel.getFavoriteTex();
     }
 
     private void observeData() {
-        viewModel.getFavoritePokemonList().observe(getViewLifecycleOwner(), new Observer<List<Truck>>() {
+        viewModel.getFavoriteList().observe(getViewLifecycleOwner(), new Observer<List<Truck>>() {
             @Override
-            public void onChanged(List<Truck> pokemons) {
+            public void onChanged(List<Truck> trucks) {
 
              // if(truck == null || truck.size() == 0)
              //      fBinding.noFavoritesText.setVisibility(View.VISIBLE);}
 
                     ArrayList<Truck> list = new ArrayList<>();
-                    list.addAll(pokemons);
+                    list.addAll(trucks);
                     adapter.updateList(list);
                  // adapter.notifyDataSetChanged();
 
@@ -81,10 +84,10 @@ public class Favorites extends Fragment {
         });
         viewModel.getFavoriteListTex().observe(getViewLifecycleOwner(), new Observer<List<Tex>>() {
             @Override
-            public void onChanged(List<Tex> pokemons) {
+            public void onChanged(List<Tex> tex) {
 
                     ArrayList<Tex> list = new ArrayList<>();
-                    list.addAll(pokemons);
+                    list.addAll(tex);
                     texAdapter.updateListTex(list);
                    // texAdapter.notifyDataSetChanged();
 
@@ -108,9 +111,9 @@ public class Favorites extends Fragment {
 
                if(swipedPosition<adapterAll.getItemCount()-texAdapter.getItemCount()){
 
-                    Truck pokemon = adapter.getPokemonAt(swipedPosition);
+                    Truck truck = adapter.getTruckAt(swipedPosition);
 
-                    viewModel.deleteTruck(pokemon.getCompany());
+                    viewModel.deleteTruck(truck.getCompany());
                     adapter.notifyDataSetChanged();
                     adapterAll.notifyDataSetChanged();
                     Toast.makeText(getContext(),"Транспорт удален из избранных",Toast.LENGTH_SHORT).show();
@@ -118,8 +121,8 @@ public class Favorites extends Fragment {
                 else{
                  int  swipedTexPosition = swipedPosition-adapter.getItemCount();
 
-                    Tex pokemon = texAdapter.getPokemonTex(swipedTexPosition);
-                    viewModel.deleteTex(pokemon.getDescription());
+                    Tex tex = texAdapter.getTex(swipedTexPosition);
+                    viewModel.deleteTex(tex.getDescription());
                     texAdapter.notifyDataSetChanged();
                     adapterAll.notifyDataSetChanged();
                     Toast.makeText(getContext(),"Транспорт удален из избранных",Toast.LENGTH_SHORT).show();

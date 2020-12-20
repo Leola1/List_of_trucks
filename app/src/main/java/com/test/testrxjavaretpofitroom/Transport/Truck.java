@@ -1,4 +1,4 @@
-package com.test.testrxjavaretpofitroom;
+package com.test.testrxjavaretpofitroom.Transport;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

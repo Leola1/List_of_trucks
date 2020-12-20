@@ -1,4 +1,7 @@
-package com.test.testrxjavaretpofitroom;
+package com.test.testrxjavaretpofitroom.ViewModel;
+
+import com.test.testrxjavaretpofitroom.Transport.Tex;
+import com.test.testrxjavaretpofitroom.Transport.Truck;
 
 import java.util.List;
 
@@ -24,7 +27,7 @@ public interface DataDAO {
         void deleteTex(String pokemonName);
 
         @Query("SELECT * FROM favorite_table")
-       LiveData<List<Truck>> getFavoritePokemons();
+       LiveData<List<Truck>> getFavoriteTruck();
         @Query("SELECT * FROM tex_table")
         LiveData<List<Tex>> getFavoriteTex();
 }

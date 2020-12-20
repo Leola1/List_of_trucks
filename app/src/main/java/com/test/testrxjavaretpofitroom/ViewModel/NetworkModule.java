@@ -1,9 +1,7 @@
-package com.test.testrxjavaretpofitroom;
+package com.test.testrxjavaretpofitroom.ViewModel;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import java.util.concurrent.TimeUnit;
+import com.test.testrxjavaretpofitroom.ApiService.APIupdateService;
+import com.test.testrxjavaretpofitroom.ApiService.TruckApiService;
 
 import javax.inject.Singleton;
 
@@ -12,7 +10,6 @@ import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.android.components.ApplicationComponent;
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory;
-import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 @Module

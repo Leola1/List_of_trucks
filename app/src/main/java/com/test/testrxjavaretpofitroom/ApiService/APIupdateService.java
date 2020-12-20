@@ -1,4 +1,4 @@
-package com.test.testrxjavaretpofitroom;
+package com.test.testrxjavaretpofitroom.ApiService;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -18,6 +18,7 @@ public class APIupdateService {
             TruckApiService api = retrofit.create(TruckApiService.class);
             return api;
         }
+
 
 
 }

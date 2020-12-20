@@ -1,4 +1,4 @@
-package com.test.testrxjavaretpofitroom;
+package com.test.testrxjavaretpofitroom.Transport;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

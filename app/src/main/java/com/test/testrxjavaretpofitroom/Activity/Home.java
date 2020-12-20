@@ -1,4 +1,4 @@
-package com.test.testrxjavaretpofitroom;
+package com.test.testrxjavaretpofitroom.Activity;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +9,10 @@ import android.widget.Toast;
 
 import com.test.testrxjavaretpofitroom.Adapter.DataAdapter;
 import com.test.testrxjavaretpofitroom.Adapter.TexAdapter;
+import com.test.testrxjavaretpofitroom.ApiService.TruckApiService;
+import com.test.testrxjavaretpofitroom.ViewModel.DataViewModel;
+import com.test.testrxjavaretpofitroom.Transport.Tex;
+import com.test.testrxjavaretpofitroom.Transport.Truck;
 import com.test.testrxjavaretpofitroom.databinding.HomeBinding;
 
 import java.util.ArrayList;
@@ -76,14 +80,14 @@ public class Home extends Fragment {
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                int swipedPosition = viewHolder.getLayoutPosition();
-                System.out.println("ПРОВЕРКА  Swipe, Home swipedPokemonPosition " +swipedPosition);
+                System.out.println("ПРОВЕРКА  Swipe, Home swipedPosition " +swipedPosition);
                 int swipedTexPosition;
 
                if(swipedPosition<adapterAll.getItemCount()-texAdapter.getItemCount()){
                //swipedTruckPosition = viewHolder.getBindingAdapter()
                 //        .findRelativeAdapterPositionIn(adapter,viewHolder,swipedPosition);
-                   Truck pokemon = adapter.getPokemonAt(swipedPosition);
-                   viewModel.insertTruck(pokemon);
+                   Truck truck = adapter.getTruckAt(swipedPosition);
+                   viewModel.insertTruck(truck);
                    adapter.notifyDataSetChanged();
                    adapterAll.notifyDataSetChanged();
                    Toast.makeText(getContext()," Добавлено в избранные .",Toast.LENGTH_SHORT).show();
@@ -91,8 +95,8 @@ public class Home extends Fragment {
                else{
 
                 swipedTexPosition = swipedPosition-adapter.getItemCount();
-                   Tex pokemon = texAdapter.getPokemonTex(swipedTexPosition);
-                   viewModel.insertTex(pokemon);
+                   Tex tex = texAdapter.getTex(swipedTexPosition);
+                   viewModel.insertTex(tex);
                    texAdapter.notifyDataSetChanged();
                    adapterAll.notifyDataSetChanged();
                    Toast.makeText(getContext(),"Добавлено в избранные",Toast.LENGTH_SHORT).show();

@@ -8,10 +8,10 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 
-import com.test.testrxjavaretpofitroom.APIupdateService;
-import com.test.testrxjavaretpofitroom.Tex;
-import com.test.testrxjavaretpofitroom.UpdateDataTex;
-import com.test.testrxjavaretpofitroom.UpdateDataTruck;
+import com.test.testrxjavaretpofitroom.ApiService.APIupdateService;
+import com.test.testrxjavaretpofitroom.Transport.Tex;
+import com.test.testrxjavaretpofitroom.Transport.UpdateDataTex;
+import com.test.testrxjavaretpofitroom.Transport.UpdateDataTruck;
 import com.test.testrxjavaretpofitroom.databinding.ListItemBinding;
 
 import java.util.ArrayList;
@@ -111,7 +111,7 @@ public class TexAdapter extends RecyclerView.Adapter<TexAdapter.TexViewHolder> {
     }
 
 
-    public  Tex getPokemonTex(int position){
+    public  Tex getTex(int position){
         return texList.get(position);
     }
 }

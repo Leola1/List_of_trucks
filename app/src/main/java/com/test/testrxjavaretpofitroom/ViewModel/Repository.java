@@ -1,4 +1,11 @@
-package com.test.testrxjavaretpofitroom;
+package com.test.testrxjavaretpofitroom.ViewModel;
+
+import com.test.testrxjavaretpofitroom.ApiService.APIupdateService;
+import com.test.testrxjavaretpofitroom.ApiService.TruckApiService;
+import com.test.testrxjavaretpofitroom.Transport.Tex;
+import com.test.testrxjavaretpofitroom.Transport.Truck;
+import com.test.testrxjavaretpofitroom.Transport.TruckResponse;
+import com.test.testrxjavaretpofitroom.ViewModel.DataDAO;
 
 import java.util.List;
 
@@ -42,9 +49,9 @@ public class Repository {
         dataDao.deleteTex(dataName);
     }
 
-  public LiveData<List<Truck>> getFavoritePokemon(){
+  public LiveData<List<Truck>> getFavoriteTruck(){
       System.out.println("ПРОВЕРКА  Repository LiveData Truck" );
-      return dataDao.getFavoritePokemons();
+      return dataDao.getFavoriteTruck();
    }
     public LiveData<List<Tex>> getFavoriteTex(){
         System.out.println("ПРОВЕРКА  Repository LiveData Tex" );

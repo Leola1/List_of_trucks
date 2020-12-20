@@ -1,13 +1,14 @@
-package com.test.testrxjavaretpofitroom;
+package com.test.testrxjavaretpofitroom.ViewModel;
 
 import android.util.Log;
 
+import com.test.testrxjavaretpofitroom.Transport.Tex;
+import com.test.testrxjavaretpofitroom.Transport.Truck;
+import com.test.testrxjavaretpofitroom.Transport.TruckResponse;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import androidx.hilt.lifecycle.ViewModelInject;
 import androidx.lifecycle.LiveData;
@@ -24,13 +25,13 @@ public class DataViewModel extends ViewModel {
     private MutableLiveData<ArrayList<Truck>> truckList = new MutableLiveData<>();
     private MutableLiveData<ArrayList<Tex>> texList = new MutableLiveData<>();
     private MutableLiveData<Collection> all = new MutableLiveData<>();
-   private LiveData<List<Truck>> favoritePokemonList = null;
+   private LiveData<List<Truck>> favoriteTruckList = null;
     private LiveData<List<Tex>> favoriteListTex = null;
 
     @ViewModelInject
     public DataViewModel(Repository repository) {
         this.repository = repository;
-       favoritePokemonList = repository.getFavoritePokemon();
+       favoriteTruckList = repository.getFavoriteTruck();
         favoriteListTex = repository.getFavoriteTex();
     }
 
@@ -44,22 +45,19 @@ public class DataViewModel extends ViewModel {
     }
 
 
-  //  public static ArrayList<List> allList;
+
   public void getDataBaseTransport(){
-    //     allList = new ArrayList();
 
         repository.getData()
                 .subscribeOn(Schedulers.io())
                 .map(new Function<TruckResponse, ArrayList<Truck>>() {
                     @Override
-                    public ArrayList<Truck> apply(TruckResponse pokemonResponse) throws Throwable {
-                        ArrayList<Truck> list = pokemonResponse.getTruck();
-                   //     System.out.println("ПРОВЕРКА  DataViewModel getPokemon list" +list);
-                        System.out.println("ПРОВЕРКА  DataViewModel getPokemon list.getCompany "
+                    public ArrayList<Truck> apply(TruckResponse truckResponse) throws Throwable {
+                        ArrayList<Truck> list = truckResponse.getTruck();
+                   //     System.out.println("ПРОВЕРКА  DataViewModel get list" +list);
+                        System.out.println("ПРОВЕРКА  DataViewModel get list.getCompany "
                                 +list.get(0).getIdTruck());
-                     /*for(Truck pokemon : list){
-                            String url = pokemon.getCompany();
-                            pokemon.setCompany(url); }*/
+
 
                         return list;
                     }
@@ -69,17 +67,17 @@ public class DataViewModel extends ViewModel {
                 .subscribe(result -> {truckList.setValue(result);
                           //  allViewModelTruck(result);
                 },
-                        error-> Log.e(TAG, "getPokemons: " + error.getMessage() ));
+                        error-> Log.e(TAG, "Error getTruck: " + error.getMessage() ));
 
         repository.getData()
                 .subscribeOn(Schedulers.io())
 
                 .map(new Function<TruckResponse, ArrayList<Tex>>() {
                     @Override
-                    public ArrayList<Tex> apply(TruckResponse pokemonResponse) throws Throwable {
-                        ArrayList<Tex> list = pokemonResponse.getTex();
-                       // System.out.println("ПРОВЕРКА  DataViewModel getPokemon list" +list);
-                        System.out.println("ПРОВЕРКА  DataViewModel getPokemon list.getIdTex "
+                    public ArrayList<Tex> apply(TruckResponse texResponse) throws Throwable {
+                        ArrayList<Tex> list = texResponse.getTex();
+                       // System.out.println("ПРОВЕРКА  DataViewModel get list" +list);
+                        System.out.println("ПРОВЕРКА  DataViewModel get list.getIdTex "
                                 +list.get(0).getIdTex());
 
                         return list;
@@ -91,7 +89,7 @@ public class DataViewModel extends ViewModel {
 
                       //    allViewModelTex(result);
                         },
-                        error-> Log.e(TAG, "getPokemons: " + error.getMessage() ));
+                        error-> Log.e(TAG, "getTruck: " + error.getMessage() ));
 
 
     }
@@ -112,15 +110,15 @@ public class DataViewModel extends ViewModel {
         repository.deleteTex(dataName);
     }
 
-    public LiveData<List<Truck>> getFavoritePokemonList() {
-        return favoritePokemonList;
+    public LiveData<List<Truck>> getFavoriteList() {
+        return favoriteTruckList;
     }
     public LiveData<List<Tex>> getFavoriteListTex() {
         return favoriteListTex;
     }
 
-    public void getFavoritePokemon(){
-        favoritePokemonList = repository.getFavoritePokemon();
+    public void getFavoriteTruck(){
+        favoriteTruckList = repository.getFavoriteTruck();
     }
     public void getFavoriteTex(){
         favoriteListTex = repository.getFavoriteTex();

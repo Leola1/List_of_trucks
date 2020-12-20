@@ -2,19 +2,14 @@ package com.test.testrxjavaretpofitroom;
 
 import androidx.appcompat.app.AppCompatActivity;
 import dagger.hilt.android.AndroidEntryPoint;
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.core.Observable;
-import io.reactivex.rxjava3.schedulers.Schedulers;
 
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
-import android.widget.Toast;
 
+import com.test.testrxjavaretpofitroom.Activity.Favorites;
+import com.test.testrxjavaretpofitroom.Activity.Home;
 import com.test.testrxjavaretpofitroom.databinding.ActivityMainBinding;
-
-import java.util.concurrent.TimeUnit;
 
 
 @AndroidEntryPoint
@@ -22,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private boolean isFavoriteListVisible = false;
-    private Home home;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
