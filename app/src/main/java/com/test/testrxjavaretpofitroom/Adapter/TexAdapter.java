@@ -1,8 +1,6 @@
-package com.test.testrxjavaretpofitroom;
+package com.test.testrxjavaretpofitroom.Adapter;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 
-
+import com.test.testrxjavaretpofitroom.APIupdateService;
+import com.test.testrxjavaretpofitroom.Tex;
+import com.test.testrxjavaretpofitroom.UpdateDataTex;
+import com.test.testrxjavaretpofitroom.UpdateDataTruck;
 import com.test.testrxjavaretpofitroom.databinding.ListItemBinding;
 
 import java.util.ArrayList;
 
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.rxjava3.annotations.NonNull;
 import retrofit2.Call;

@@ -7,10 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.test.testrxjavaretpofitroom.Adapter.DataAdapter;
+import com.test.testrxjavaretpofitroom.Adapter.TexAdapter;
 import com.test.testrxjavaretpofitroom.databinding.HomeBinding;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import androidx.fragment.app.Fragment;
@@ -26,9 +27,6 @@ import io.reactivex.rxjava3.annotations.Nullable;
 import androidx.lifecycle.Observer;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.schedulers.Schedulers;
-
-import static com.test.testrxjavaretpofitroom.NetworkModule.provideApiService;
 
 @AndroidEntryPoint
 public class Home extends Fragment {

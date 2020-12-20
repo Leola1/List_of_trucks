@@ -1,19 +1,18 @@
-package com.test.testrxjavaretpofitroom;
+package com.test.testrxjavaretpofitroom.Adapter;
 
 import android.content.Context;
 import android.graphics.Color;
 import android.text.Editable;
-import android.text.InputType;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.Toast;
 
+import com.test.testrxjavaretpofitroom.APIupdateService;
+import com.test.testrxjavaretpofitroom.Truck;
+import com.test.testrxjavaretpofitroom.UpdateDataTruck;
 import com.test.testrxjavaretpofitroom.databinding.ListItemBinding;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 import io.reactivex.rxjava3.annotations.NonNull;
