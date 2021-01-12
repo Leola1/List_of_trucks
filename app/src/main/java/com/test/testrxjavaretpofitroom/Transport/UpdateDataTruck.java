@@ -12,10 +12,6 @@ public class UpdateDataTruck {
     @Expose
     private transient String company;
 
-   /* public UpdateDataTruck(String company, Integer idTruck) {
-        this.company = company;
-        this.idTruck = idTruck;
-    }*/
 
     public Integer getIdTruck() {
         System.out.println("ПРОВЕРКА  UpdateDataTruck getIdTruck " +idTruck);

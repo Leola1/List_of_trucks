@@ -58,14 +58,13 @@ public class DataViewModel extends ViewModel {
                         System.out.println("ПРОВЕРКА  DataViewModel get list.getCompany "
                                 +list.get(0).getIdTruck());
 
-
                         return list;
                     }
                 })
 
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(result -> {truckList.setValue(result);
-                          //  allViewModelTruck(result);
+
                 },
                         error-> Log.e(TAG, "Error getTruck: " + error.getMessage() ));
 

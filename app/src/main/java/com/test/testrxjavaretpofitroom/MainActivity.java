@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     binding.changeFragment.setText("Избранное");
                     getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,new Home())
                             .commit();
+
                 }
                 else {
                     isFavoriteListVisible = true;
@@ -54,21 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-   // public void updateBase(){
 
-     /*   Observable.interval(60, TimeUnit.SECONDS)
-                .flatMap(n -> { return dataViewModel.getDataBaseTransport();})
-                .repeat()
-                .subscribe();
- Subscription subscription = Observable.interval(1000, 5000,
-                TimeUnit.MILLISECONDS)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<Long>() {
-                    public void call(Long aLong) {
-                        // here is the task that should repeat
-                    }
-                });
-    }*/
 
 
 

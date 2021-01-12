@@ -107,7 +107,7 @@ public class Favorites extends Fragment {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
 
                 int swipedPosition = viewHolder.getLayoutPosition();
-                System.out.println("ПРОВЕРКА  Swipe, Home swipedPokemonPosition " +swipedPosition);
+                System.out.println("ПРОВЕРКА  Swipe, Home swipedPosition " +swipedPosition);
 
                if(swipedPosition<adapterAll.getItemCount()-texAdapter.getItemCount()){
 

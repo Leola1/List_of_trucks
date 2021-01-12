@@ -107,7 +107,7 @@ public class Home extends Fragment {
         };
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-        itemTouchHelper.attachToRecyclerView(binding.pokemonRecyclerView);
+        itemTouchHelper.attachToRecyclerView(binding.truckRecyclerView);
     }
 
 
@@ -119,17 +119,17 @@ public class Home extends Fragment {
        viewModel.getTruckList()
                .observe(getViewLifecycleOwner(), new Observer<ArrayList<Truck>>() {
             @Override
-            public void onChanged(ArrayList<Truck> pokemons) {
-                Log.e(TAG, "onChanged: " + pokemons.size() );
-                adapter.updateList(pokemons);
+            public void onChanged(ArrayList<Truck> trucks) {
+                Log.e(TAG, "onChanged: " + trucks.size() );
+                adapter.updateList(trucks);
 
             }
         });
        viewModel.getTexList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Tex>>() {
            @Override
-           public void onChanged(ArrayList<Tex> pokemon) {
-               Log.e(TAG, "onChanged: " + pokemon.size() );
-               texAdapter.updateListTex(pokemon);
+           public void onChanged(ArrayList<Tex> tex) {
+               Log.e(TAG, "onChanged: " + tex.size() );
+               texAdapter.updateListTex(tex);
 
            }
        });
@@ -137,13 +137,13 @@ public class Home extends Fragment {
     }
 
     private void initRecyclerView() {
-        binding.pokemonRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.truckRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
       adapter = new DataAdapter(getContext(),truckList);
       texAdapter = new TexAdapter(getContext(),texList);
    adapterAll = new ConcatAdapter(adapter, texAdapter);
 
        // binding.pokemonRecyclerView.setAdapter(adapter);
-        binding.pokemonRecyclerView.setAdapter(adapterAll);
+        binding.truckRecyclerView.setAdapter(adapterAll);
     }
 
 
@@ -158,24 +158,8 @@ public class Home extends Fragment {
     private void callEndpoint(Long aLong) {
         viewModel.getDataBaseTransport();
         System.out.println("ПРОВЕРКА  Home обновление каждые 30 секунд");
-      /*  Observable<TruckResponse> observable =  provideApiService().getTrucks();
-        observable.subscribeOn(Schedulers.newThread()).
-                observeOn(AndroidSchedulers.mainThread())
-                .map(result -> result.getTruck())
-                .subscribe(result -> {
 
-                truckList.addAll(result);
-                    observeData();
-                });
 
-        Observable<TruckResponse> observableTex = provideApiService().getTrucks();
-        observableTex.subscribeOn(Schedulers.newThread()).
-                observeOn(AndroidSchedulers.mainThread())
-                .map(result -> result.getTex())
-                .subscribe(result -> {
-                    texList.addAll(result);
-                    observeData();
-                });*/
     }
 
     @Override

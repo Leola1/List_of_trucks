@@ -20,11 +20,11 @@ public interface DataDAO {
         @Insert
         void insertTex(Tex tex);
 
-        @Query("DELETE FROM favorite_table WHERE company = :pokemonName")
-        void deleteTruck(String pokemonName);
+        @Query("DELETE FROM favorite_table WHERE company = :transportName")
+        void deleteTruck(String transportName);
 
-        @Query("DELETE FROM tex_table WHERE description = :pokemonName")
-        void deleteTex(String pokemonName);
+        @Query("DELETE FROM tex_table WHERE description = :transportName")
+        void deleteTex(String transportName);
 
         @Query("SELECT * FROM favorite_table")
        LiveData<List<Truck>> getFavoriteTruck();
